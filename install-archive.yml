@@ -1,0 +1,14 @@
+---
+- name: Install Nmap & Archive
+  hosts: all
+  tasks:
+    - name: Install nmap
+      package:
+        name: nmap
+        state: present
+    
+    - name : Archive
+      archive:
+        path: /var/log
+        dest: /tmp/logs.tar.xz
+        format: xz

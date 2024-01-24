@@ -1,0 +1,11 @@
+---
+- name: first-play
+  hosts: all
+  tasks:
+    - name: create new file
+      file:
+        path: /home/foo.conf
+        state: touch
+
+    - name: create group
+      import_tasks: group-tasks.yml

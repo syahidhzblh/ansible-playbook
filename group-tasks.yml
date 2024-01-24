@@ -1,0 +1,10 @@
+---
+- name: create developers group
+  group:
+    name: developers
+- name: create security group
+  group:
+    name: security
+- name: create devops group
+  group:
+    name: devops
