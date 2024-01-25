@@ -1,0 +1,11 @@
+port_nums: [80,443,22,23]
+
+users:
+  syahid:
+    username: syahid
+    uid: 1717
+    shell: /bin/bash
+  hisbul:
+    username: hisbul
+    uid: 1212
+    shell: /bin/sh
