@@ -1,0 +1,13 @@
+---
+- name: Countdown
+  hosts: node1
+  tasks:
+    - name: Birthday Countdown
+      debug:
+        msg: "{{ 10 - item }} seconds remaining..."
+      loop: "{{range(10) | list}}"
+      loop_control:
+        pause: 1
+    - name: Display Happy Birthday
+      debug:
+        msg: Happy Birthday

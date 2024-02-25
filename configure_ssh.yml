@@ -1,0 +1,19 @@
+---
+- name: Configure SSH
+  hosts: dev
+  tasks:
+    - name: Edit sshd_config
+      blockinfile:
+        name: Edit sshd_config
+        block: |
+          MaxAuthTries 4
+          Banner /etc/motd
+      notify: ssh_restart
+
+  handlers:
+    - name: ssh_restart
+      service:
+        name: ssh
+        state: restarted
+
+    

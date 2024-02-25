@@ -1,0 +1,15 @@
+---
+- name: Register Uptime Node
+  hosts: all
+  tasks:
+    - name: Run Command
+      command: uptime
+      register: server_uptime
+
+    - name: Inspect server_uptime variable
+      debug:
+        var: server_uptime
+
+    - name: Show uptime node
+      debug:
+        msg: "{{server_uptime.stdout}}"

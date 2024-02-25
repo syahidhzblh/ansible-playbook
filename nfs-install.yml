@@ -1,0 +1,28 @@
+---
+- name: Install nfs-common
+  hosts: node1
+  tasks:
+    - name: Run apt-update
+      apt:
+        update_cache: yes
+
+    - name: Install nfs-common on Ubuntu client
+      apt:
+        name: nfs-common
+        state: latest
+      when: ansible_facts['distribution'] == "Ubuntu"
+      notify: nfs-utils-done
+
+    - name: Register nfs var
+      shell: apt list | grep nfs-common
+      register: nfs_var
+      notify: show-installed-nfs
+      
+  handlers:
+    - name: nfs-utils-done
+      debug:
+        msg: "Done Install nfs-common"
+    
+    - name: show-installed-nfs
+      debug:
+        msg: "{{nfs_var.stdout_lines}}"
